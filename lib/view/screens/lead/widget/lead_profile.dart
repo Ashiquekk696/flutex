@@ -7,7 +7,6 @@ import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/model/lead/lead_details_model.dart';
 import 'package:flutex_admin/view/components/divider/custom_divider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
 

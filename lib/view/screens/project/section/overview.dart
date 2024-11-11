@@ -192,13 +192,13 @@ class OverviewWidget extends StatelessWidget {
                 children: [
                   CustomContainer(
                       name: LocalStrings.totalExpenses.tr,
-                      //TODO: get the right value
+                    
                       number: '0.00',
                       color: Theme.of(context).textTheme.bodyLarge!.color!),
                   const SizedBox(width: Dimensions.space10),
                   CustomContainer(
                       name: LocalStrings.billableExpenses.tr,
-                      //TODO: get the right value
+    
                       number: '0.00',
                       color: ColorResources.colorOrange),
                 ],
@@ -210,13 +210,13 @@ class OverviewWidget extends StatelessWidget {
                 children: [
                   CustomContainer(
                       name: LocalStrings.billedExpenses.tr,
-                      //TODO: get the right value
+                      
                       number: '0.00',
                       color: ColorResources.greenColor),
                   const SizedBox(width: Dimensions.space10),
                   CustomContainer(
                       name: LocalStrings.unbilledExpenses.tr,
-                      //TODO: get the right value
+                   
                       number: '0.00',
                       color: ColorResources.redColor),
                 ],
@@ -269,10 +269,10 @@ class OverviewWidget extends StatelessWidget {
                       ),
                       child: CustomLinerProgress(
                         color: ColorResources.colorOrange,
-                        //TODO: get the right value
+                       
                         value: 0.8,
                         name: LocalStrings.openTasks.tr,
-                        //TODO: get open tasks and total tasks from api
+                        
                         data: '2/3',
                       ),
                     ),

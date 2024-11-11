@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 radius: 32,
                                 child: CircleImageWidget(
                                   imagePath: controller
-                                          .homeModel?.staff?.profileImage ??
+                                          .homeModel.staff?.profileImage ??
                                       '',
                                   isAsset: false,
                                   isProfile: true,

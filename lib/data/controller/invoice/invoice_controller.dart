@@ -1,13 +1,12 @@
 import 'dart:async';
-import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
-import 'package:flutex_admin/data/controller/customer/customer_controller.dart';
-import 'package:flutex_admin/data/model/authorization/authorization_response_model.dart';
+
 import 'package:flutex_admin/data/model/customer/customer_model.dart';
 import 'package:flutex_admin/data/model/global/currencies_model.dart';
 import 'package:flutex_admin/data/model/global/payment_modes_model.dart';
-//import 'package:flutex_admin/data/model/global/taxes_model.dart';
+
 import 'package:flutex_admin/data/model/invoice/invoice_details_model.dart';
 import 'package:flutex_admin/data/model/invoice/invoice_item_model.dart';
 import 'package:flutex_admin/data/model/invoice/invoice_model.dart';

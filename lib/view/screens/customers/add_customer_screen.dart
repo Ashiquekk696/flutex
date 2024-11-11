@@ -251,7 +251,7 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                           physics: const AlwaysScrollableScrollPhysics(),
                           child: Column(
                             children: [
-                              SizedBox(height: Dimensions.space10),
+                              const SizedBox(height: Dimensions.space10),
                               CustomTextField(
                                 animatedLabel: true,
                                 needOutlineBorder: true,

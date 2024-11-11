@@ -34,7 +34,7 @@ class _ContractsScreenState extends State<ContractsScreen> {
     controller.isLoading = true;
 
     handleScroll();
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       controller.initialData();
     });
   }
@@ -80,7 +80,7 @@ class _ContractsScreenState extends State<ContractsScreen> {
       ),
       body: GetBuilder<ContractController>(
         builder: (controller) {
-          return (controller.isLoading ?? true)
+          return (controller.isLoading)
               ? const CustomLoader()
               : RefreshIndicator(
                   color: ColorResources.primaryColor,

@@ -103,10 +103,7 @@ class ApiClient extends GetxService {
         Get.offAllNamed(RouteHelper.loginScreen);
         return ResponseModel(
             false, LocalStrings.unAuthorized.tr, 401, response.body);
-      } else if (response.statusCode == 404) {
-        //TODO: //sharedPreferences.setBool(SharedPreferenceHelper.rememberMeKey, false);
-        //Get.offAllNamed(RouteHelper.loginScreen);
-        //return ResponseModel(false, LocalStrings.unAuthorized.tr, 404, response.body);
+      } else if (response.statusCode == 404) { 
         return ResponseModel(
             false, LocalStrings.noDataFound.tr, 404, response.body);
       } else if (response.statusCode == 500) {

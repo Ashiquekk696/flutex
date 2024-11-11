@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutex_admin/data/model/customer/customer_post_model.dart';
 
 abstract class CustomerRemoteDataSource {
   Stream<Map<String, dynamic>> getCustomerDataStream();
@@ -54,7 +53,6 @@ class CustomerRemoteDataSourceImpl implements CustomerRemoteDataSource {
         .map((snapshot) {
       if (snapshot.exists) {
         final data = snapshot.data() as Map<String, dynamic>;
-        print('Additional Data: $data');
         return data;
       } else {
         return {};

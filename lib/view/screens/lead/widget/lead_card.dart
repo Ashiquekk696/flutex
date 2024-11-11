@@ -91,7 +91,7 @@ class LeadCard extends StatelessWidget {
                       children: [
                         TextIcon(
                           text: leadModel.data![index].statusName ?? '',
-                          prefix: Icon(
+                          prefix: const Icon(
                             Icons.check_circle_outline_rounded,
                             // color: Converter.hexStringToColor(
                             //     leadModel.data![index].color ?? '000000'),

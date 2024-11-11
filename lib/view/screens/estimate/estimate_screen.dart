@@ -134,8 +134,8 @@ class _EstimateScreenState extends State<EstimateScreen> {
                                                           ?.estimates ??
                                                       [])[index]
                                                   .total
-                                                  .toString() ??
-                                              "",
+                                                  .toString()  
+                                             ,
                                           color: ColorResources.blueColor);
                                     },
                                     separatorBuilder: (context, index) =>
