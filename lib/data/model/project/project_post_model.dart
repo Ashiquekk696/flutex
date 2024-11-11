@@ -32,8 +32,7 @@ class ProjectPostModel {
     required this.tags,
     required this.description,
   });
-
-  /// Converts the ProjectPostModel to JSON format
+ 
   Map<String, dynamic> toJson() {
     return {
       'name': name,
@@ -41,6 +40,7 @@ class ProjectPostModel {
       'clientId': clientId,
       'billingType': billingType,
       'startDate': startDate,
+      'company':clientId,
       'status': status,
       'progressFromTasks': progressFromTasks,
       'projectCost': projectCost,

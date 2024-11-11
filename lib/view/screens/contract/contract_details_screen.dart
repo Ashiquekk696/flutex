@@ -1,8 +1,6 @@
 import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/data/controller/contract/contract_controller.dart';
-import 'package:flutex_admin/data/repo/contract/contract_repo.dart';
-import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +18,6 @@ class ContractDetailsScreen extends StatefulWidget {
 class _ContractDetailsScreenState extends State<ContractDetailsScreen> {
   @override
   void initState() {
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ContractRepo(apiClient: Get.find()));
     final controller = Get.put(ContractController(contractRepo: Get.find(),customerRepo: Get.find()));
     controller.isLoading = true;
     super.initState();

@@ -23,7 +23,7 @@ class EstimateCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.toNamed(RouteHelper.estimateDetailsScreen,
-            arguments: estimateModel.data![index].id!);
+            arguments: estimateModel.data?[index].id ?? 0);
       },
       child: Card(
         margin: EdgeInsets.zero,
@@ -36,7 +36,7 @@ class EstimateCard extends StatelessWidget {
                 left: BorderSide(
                   width: 5.0,
                   color: ColorResources.estimateStatusColor(
-                      estimateModel.data![index].status ?? ''),
+                      estimateModel.data?[index].status ?? ''),
                 ),
               ),
             ),
@@ -48,11 +48,11 @@ class EstimateCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '${estimateModel.data![index].prefix!}${estimateModel.data![index].number}',
+                          '${estimateModel.data?[index].prefix ?? ""}${estimateModel.data![index].number ?? ""}',
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                         Text(
-                          '${estimateModel.data![index].total} ${estimateModel.data![index].currency}',
+                          '${estimateModel.data![index].total ?? ""} ${estimateModel.data?[index].currency ?? ""}',
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                       ],
@@ -63,7 +63,7 @@ class EstimateCard extends StatelessWidget {
                       children: [
                         TextIcon(
                           text: Converter.estimateStatusString(
-                              estimateModel.data![index].status ?? '1'),
+                              estimateModel.data?[index].status ?? '1'),
                           prefix: const Icon(
                             Icons.check_circle_outline_rounded,
                             color: ColorResources.primaryColor,
@@ -75,7 +75,7 @@ class EstimateCard extends StatelessWidget {
                         ),
                         const SizedBox(width: Dimensions.space10),
                         TextIcon(
-                          text: estimateModel.data![index].expiryDate,
+                          text: estimateModel.data?[index].expiryDate,
                           prefix: const Icon(
                             Icons.calendar_month,
                             color: ColorResources.primaryColor,

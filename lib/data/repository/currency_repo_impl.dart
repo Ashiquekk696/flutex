@@ -13,7 +13,7 @@ class CurrencyRepositoryImpl implements CurrencyRepository {
 
 @override
   Stream<CurrenciesModel> getCurrencyData() {
-    return remoteDataSource.getInvoiceCurrencyDataStream().map((data) {
+    return remoteDataSource.getCurrencyStream().map((data) {
       final currencyResponseModel = CurrenciesModel.fromJson(data['data']);
       return currencyResponseModel;
     });

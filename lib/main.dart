@@ -12,11 +12,12 @@ import 'package:get/get.dart';
 import 'package:flutex_admin/core/route/route.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/di_service/di_services.dart' as services;
+import 'data/services/auth_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
- 
+  Get.put<AuthService>(AuthService(),  );
  firestore. FirebaseFirestore.instance.settings =    firestore.Settings(
     persistenceEnabled: true,
   );

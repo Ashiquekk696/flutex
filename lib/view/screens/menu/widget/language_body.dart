@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -36,15 +34,14 @@ class _LanguageBodyState extends State<LanguageBody> {
                     selectedIndex = index;
                   });
                   String languageCode = widget.langList[index].languageCode;
-                  final repo = Get.put(HomeRepo(apiClient: Get.find()));
+               
                   final localizationController = Get.put(
                       LocalizationController(sharedPreferences: Get.find()));
                   Map<String, Map<String, String>> language = {};
                   final String response = await rootBundle
                       .loadString('assets/lang/$languageCode.json');
                   var resJson = jsonDecode(response);
-                  await repo.apiClient.sharedPreferences.setString(
-                      SharedPreferenceHelper.languageListKey, languageCode);
+
 
                   var value = resJson as Map<String, dynamic>;
                   Map<String, String> json = {};

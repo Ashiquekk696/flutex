@@ -14,7 +14,7 @@ class PaymentMethodRemoteDataSourceImpl implements PaymentMethodRemoteDataSource
     
     return firestore
         .collection('homeResponses')
-        .doc('currencies')
+        .doc('paymentMethods')
         .snapshots()
         .map((snapshot) {
       if (snapshot.exists) {

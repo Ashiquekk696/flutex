@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class EstimatesRemoteDataSource {
   Stream<Map<String, dynamic>> getEstimatesDataStream();
+  Future<void> addEstimatesToFirestore(Map<String, dynamic> data) ;
 }
 
 class EstimatesRemoteDataSourceImpl implements EstimatesRemoteDataSource {
@@ -23,6 +24,12 @@ class EstimatesRemoteDataSourceImpl implements EstimatesRemoteDataSource {
       } else { 
         return {};
       }
+    });
+  }
+    @override
+  Future<void> addEstimatesToFirestore(Map<String, dynamic> data) async {
+    await firestore.collection('homeResponses').doc('estimates').update({
+      'data': FieldValue.arrayUnion([data])
     });
   }
 }

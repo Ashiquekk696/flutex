@@ -4,7 +4,7 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/proposal/proposal_controller.dart';
-import 'package:flutex_admin/data/repo/proposal/proposal_repo.dart';
+ 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
@@ -25,14 +25,12 @@ class _ProposalDetailsScreenState extends State<ProposalDetailsScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ProposalRepo(apiClient: Get.find()));
+ 
     final controller = Get.put(ProposalController(proposalRepo: Get.find(),customerRepo: Get.find(),currencyRepo: Get.find()));
     controller.isLoading = true;
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.loadProposalDetails(widget.id);
-    });
+    
   }
 
   @override
@@ -46,8 +44,7 @@ class _ProposalDetailsScreenState extends State<ProposalDetailsScreen> {
           return controller.isLoading
               ? const CustomLoader()
               : RefreshIndicator(
-                  onRefresh: () async {
-                    await controller.loadProposalDetails(widget.id);
+                  onRefresh: () async { 
                   },
                   child: SingleChildScrollView(
                     physics: const AlwaysScrollableScrollPhysics(),

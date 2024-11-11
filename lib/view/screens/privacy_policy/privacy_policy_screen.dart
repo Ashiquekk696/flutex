@@ -6,7 +6,6 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/color_resources.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/privacy/privacy_controller.dart';
-import 'package:flutex_admin/data/repo/privacy/privacy_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/buttons/category_button.dart';
@@ -22,15 +21,11 @@ class PrivacyPolicyScreen extends StatefulWidget {
 class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   @override
   void initState() {
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(PrivacyRepo(apiClient: Get.find()));
-    final controller = Get.put(PrivacyController(repo: Get.find()));
+    Get.put(ApiClient(sharedPreferences: Get.find())); 
 
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.loadData();
-    });
+   
   }
 
   @override

@@ -3,8 +3,7 @@ import 'package:flutex_admin/core/utils/color_resources.dart';
 import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
-import 'package:flutex_admin/data/controller/contract/contract_controller.dart';
-import 'package:flutex_admin/data/repo/contract/contract_repo.dart';
+import 'package:flutex_admin/data/controller/contract/contract_controller.dart'; 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_fab.dart';
@@ -29,8 +28,7 @@ class _ContractsScreenState extends State<ContractsScreen> {
   @override
   void initState() {
     super.initState();
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ContractRepo(apiClient: Get.find()));
+    Get.put(ApiClient(sharedPreferences: Get.find())); 
     final controller = Get.put(
         ContractController(contractRepo: Get.find(), customerRepo: Get.find()));
     controller.isLoading = true;

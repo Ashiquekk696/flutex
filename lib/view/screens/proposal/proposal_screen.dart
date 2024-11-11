@@ -4,8 +4,7 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/data/controller/home/home_controller.dart';
 import 'package:flutex_admin/data/controller/proposal/proposal_controller.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
-import 'package:flutex_admin/data/repo/proposal/proposal_repo.dart';
+
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_fab.dart';
@@ -28,10 +27,10 @@ class _ProposalScreenState extends State<ProposalScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ProposalRepo(apiClient: Get.find()));
+ 
     final controller = Get.put(ProposalController(proposalRepo: Get.find(),customerRepo: Get.find(),currencyRepo: Get.find()));
-    Get.put(HomeRepo(apiClient: Get.find()));
-    final homeController = Get.put(HomeController(homeRepo: Get.find()));
+ 
+    final homeController = Get.put(HomeController(homeRepo: Get.find(),authService: Get.find()));
     controller.isLoading = true;
     super.initState();
     handleScroll();

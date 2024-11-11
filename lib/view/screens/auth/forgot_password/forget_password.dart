@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/style.dart';
-import 'package:flutex_admin/data/repo/auth/login_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_button.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_loading_button.dart';
@@ -25,8 +24,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(LoginRepo(apiClient: Get.find()));
-    Get.put(ForgetPasswordController(loginRepo: Get.find()));
+    Get.put(ForgetPasswordController());
 
     super.initState();
   }

@@ -5,7 +5,6 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/project/project_controller.dart';
-import 'package:flutex_admin/data/repo/project/project_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
@@ -30,7 +29,6 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ProjectRepo(apiClient: Get.find()));
     final controller = Get.put(ProjectController(projectRepo: Get.find(),customerRepo: Get.find()));
     controller.isLoading = true;
     super.initState();

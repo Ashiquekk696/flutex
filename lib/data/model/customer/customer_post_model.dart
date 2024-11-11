@@ -52,7 +52,7 @@ class CustomerPostModel {
     return {
       'company': company,
       'vat': vat,
-      'phoneNumber': phoneNumber,
+      'phonenumber': phoneNumber,
       'website': website,
       'groupsIn': groupsIn,
       'defaultLanguage': defaultLanguage,

@@ -7,7 +7,6 @@ import 'package:flutex_admin/core/utils/color_resources.dart';
 import 'package:flutex_admin/core/utils/images.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/auth/login_controller.dart';
-import 'package:flutex_admin/data/repo/auth/login_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_button.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_loading_button.dart';
@@ -28,9 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(LoginRepo(apiClient: Get.find()));
+
     Get.put(AuthService());
-    Get.put(LoginController(loginRepo: Get.find(),authService:Get.find()));
+    Get.put(LoginController(authService:Get.find()));
 
     super.initState();
 

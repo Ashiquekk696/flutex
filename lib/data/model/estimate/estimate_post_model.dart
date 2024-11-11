@@ -64,4 +64,39 @@ class EstimatePostModel {
     this.clientNote,
     this.terms,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'clientId': clientId,
+      'number': number,
+      'date': date,
+      'duedate': duedate,
+      'currency': currency,
+      'firstItemName': firstItemName,
+      'firstItemDescription': firstItemDescription,
+      'firstItemQty': firstItemQty,
+      'firstItemRate': firstItemRate,
+      'firstItemUnit': firstItemUnit, 
+      'subtotal': subtotal,
+      'total': total,
+      'billingStreet': billingStreet,
+      'billingCity': billingCity,
+      'billingState': billingState,
+      'billingZip': billingZip,
+      'billingCountry': billingCountry,
+      'shippingStreet': shippingStreet,
+      'shippingCity': shippingCity,
+      'shippingState': shippingState,
+      'shippingZip': shippingZip,
+      'expirydate':duedate,
+      'shippingCountry': shippingCountry,
+      'tags': tags,
+      'status': status,
+      'reference': reference,
+      'saleAgent': saleAgent,
+      'adminNote': adminNote,
+      'clientNote': clientNote,
+      'terms': terms,
+    };
+  }
 }

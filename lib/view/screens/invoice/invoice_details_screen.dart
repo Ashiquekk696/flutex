@@ -4,7 +4,6 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/invoice/invoice_controller.dart';
-import 'package:flutex_admin/data/repo/invoice/invoice_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
@@ -25,8 +24,7 @@ class InvoiceDetailsScreen extends StatefulWidget {
 class _InvoiceDetailsScreenState extends State<InvoiceDetailsScreen> {
   @override
   void initState() {
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(InvoiceRepo(apiClient: Get.find()));
+    Get.put(ApiClient(sharedPreferences: Get.find())); 
     final controller = Get.put(InvoiceController(invoiceRepo: Get.find(),
     currencyRepo: Get.find(),
     customerRepo: Get.find(),paymentMethodRepository: Get.find()));

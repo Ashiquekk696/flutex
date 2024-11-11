@@ -2,13 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:flutex_admin/core/route/route.dart';
-import 'package:flutex_admin/data/repo/auth/login_repo.dart';
 import 'package:flutex_admin/view/components/snack_bar/show_custom_snackbar.dart';
 
 import '../../services/auth_service.dart';
 
 class LoginController extends GetxController {
-  LoginRepo loginRepo;
+
   final AuthService authService;
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode passwordFocusNode = FocusNode();
@@ -23,7 +22,7 @@ class LoginController extends GetxController {
   String? password;
   bool remember = false;
 
-  LoginController({required this.loginRepo, required this.authService});
+  LoginController({ required this.authService});
  
   bool isSubmitLoading = false;
 

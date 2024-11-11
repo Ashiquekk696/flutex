@@ -4,8 +4,6 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/data/controller/estimate/estimate_controller.dart';
 import 'package:flutex_admin/data/controller/home/home_controller.dart';
-import 'package:flutex_admin/data/repo/estimate/estimate_repo.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_fab.dart';
@@ -28,10 +26,13 @@ class _EstimateScreenState extends State<EstimateScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(EstimateRepo(apiClient: Get.find()));
-    final controller = Get.put(EstimateController(estimateRepo: Get.find(),currencyRepo: Get.find(),customerRepo: Get.find()));
-    Get.put(HomeRepo(apiClient: Get.find()));
-    final homeController = Get.put(HomeController(homeRepo: Get.find()));
+    final controller = Get.put(EstimateController(
+        estimateRepo: Get.find(),
+        currencyRepo: Get.find(),
+        customerRepo: Get.find()));
+
+    final homeController =
+        Get.put(HomeController(homeRepo: Get.find(), authService: Get.find()));
     controller.isLoading = true;
     super.initState();
     handleScroll();
@@ -87,12 +88,9 @@ class _EstimateScreenState extends State<EstimateScreen> {
       body: GetBuilder<HomeController>(builder: (homeController) {
         return GetBuilder<EstimateController>(
           builder: (controller) {
-            return
-            
-             controller.isLoading
+            return controller.isLoading
                 ? const CustomLoader()
-                :
-                 RefreshIndicator(
+                : RefreshIndicator(
                     color: ColorResources.primaryColor,
                     onRefresh: () async {
                       await controller.initialData(shouldLoad: false);
@@ -144,7 +142,7 @@ class _EstimateScreenState extends State<EstimateScreen> {
                                         const SizedBox(
                                             width: Dimensions.space5),
                                     itemCount: (homeController
-                                                .homeModel.data!.estimates ??
+                                                .homeModel.data?.estimates ??
                                             [])
                                         .length),
                               ),

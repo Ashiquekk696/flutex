@@ -5,8 +5,7 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/contract/contract_controller.dart';
-import 'package:flutex_admin/data/model/customer/customer_model.dart';
-import 'package:flutex_admin/data/repo/contract/contract_repo.dart';
+import 'package:flutex_admin/data/model/customer/customer_model.dart'; 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_button.dart';
@@ -27,8 +26,7 @@ class AddContractScreen extends StatefulWidget {
 class _AddContractScreenState extends State<AddContractScreen> {
   @override
   void initState() {
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ContractRepo(apiClient: Get.find()));
+    Get.put(ApiClient(sharedPreferences: Get.find())); 
     final controller = Get.put(
     ContractController(contractRepo: Get.find(), customerRepo: Get.find()));
     controller.loadContracts();

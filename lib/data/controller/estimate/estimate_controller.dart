@@ -18,9 +18,12 @@ import '../../../domain/currency_repository.dart';
 
 class EstimateController extends GetxController {
   EstimatesRepository estimateRepo;
-   CurrencyRepository currencyRepo;
-    CustomerRepository customerRepo;
-  EstimateController({required this.estimateRepo,required this.currencyRepo,required this.customerRepo});
+  CurrencyRepository currencyRepo;
+  CustomerRepository customerRepo;
+  EstimateController(
+      {required this.estimateRepo,
+      required this.currencyRepo,
+      required this.customerRepo});
 
   bool isLoading = false;
   bool isSubmitLoading = false;
@@ -51,7 +54,7 @@ class EstimateController extends GetxController {
     estimateRepo.getEstimatesData().listen((data) {
       estimatesModel = data;
       update();
-    }); 
+    });
     isLoading = false;
     update();
   }
@@ -63,7 +66,7 @@ class EstimateController extends GetxController {
       currenciesModel = currenciesResponseModel;
       update();
     });
-     customerRepo.getCustomerData().listen((data) {
+    customerRepo.getCustomerData().listen((data) {
       customersModel = data;
       update();
     });
@@ -205,7 +208,14 @@ class EstimateController extends GetxController {
       terms: terms,
     );
 
- 
+    estimateRepo.postEstimate(estimateModel);
+    sumbittedSucessfully();
+  }
+
+  sumbittedSucessfully() {
+    CustomSnackBar.success(successList: [LocalStrings.submitSuccessMsg]);
+    isSubmitLoading = false;
+    update();
   }
 
   void clearData() {

@@ -5,8 +5,6 @@ import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/home/home_controller.dart';
 import 'package:flutex_admin/data/controller/invoice/invoice_controller.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
-import 'package:flutex_admin/data/repo/invoice/invoice_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_fab.dart';
@@ -29,14 +27,12 @@ class _InvoicesScreenState extends State<InvoicesScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(InvoiceRepo(apiClient: Get.find()));
     final controller = Get.put(
         InvoiceController(invoiceRepo: Get.find(), 
         currencyRepo: Get.find(),
         customerRepo: Get.find(),
         paymentMethodRepository: Get.find()));
-    Get.put(HomeRepo(apiClient: Get.find()));
-    final homeController = Get.put(HomeController(homeRepo: Get.find()));
+    final homeController = Get.put(HomeController(homeRepo: Get.find(),authService: Get.find()));
     controller.isLoading = true;
     super.initState();
     handleScroll();

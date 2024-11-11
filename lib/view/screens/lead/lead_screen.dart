@@ -5,12 +5,9 @@ import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/home/home_controller.dart';
 import 'package:flutex_admin/data/controller/lead/lead_controller.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
-import 'package:flutex_admin/data/repo/lead/lead_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_fab.dart';
-import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
 import 'package:flutex_admin/view/components/no_data.dart';
 import 'package:flutex_admin/view/components/overview_card.dart';
 import 'package:flutex_admin/view/screens/lead/widget/lead_card.dart';
@@ -29,10 +26,8 @@ class _LeadScreenState extends State<LeadScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(LeadRepo(apiClient: Get.find()));
     final controller = Get.put(LeadController(leadRepo: Get.find(),statusRepository: Get.find()));
-    Get.put(HomeRepo(apiClient: Get.find()));
-    final homeController = Get.put(HomeController(homeRepo: Get.find()));
+    final homeController = Get.put(HomeController(homeRepo: Get.find(),authService: Get.find()));
     controller.isLoading = true;
     super.initState();
     handleScroll();

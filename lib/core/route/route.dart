@@ -20,9 +20,7 @@ import 'package:flutex_admin/view/screens/item/item_screen.dart';
 import 'package:flutex_admin/view/screens/lead/add_lead_screen.dart';
 import 'package:flutex_admin/view/screens/lead/lead_details_screen.dart';
 import 'package:flutex_admin/view/screens/lead/lead_screen.dart';
-import 'package:flutex_admin/view/screens/menu/menu_screen.dart';
-import 'package:flutex_admin/view/screens/payments/payment_details_screen.dart';
-import 'package:flutex_admin/view/screens/payments/payment_screen.dart';
+import 'package:flutex_admin/view/screens/menu/menu_screen.dart'; 
 import 'package:flutex_admin/view/screens/privacy_policy/privacy_policy_screen.dart';
 import 'package:flutex_admin/view/screens/profile/profile_screen.dart';
 import 'package:flutex_admin/view/screens/project/add_project_screen.dart';
@@ -127,10 +125,7 @@ class RouteHelper {
         name: proposalDetailsScreen,
         page: () => ProposalDetailsScreen(id: Get.arguments)),
     GetPage(name: addProposalScreen, page: () => const AddProposalScreen()),
-    GetPage(name: paymentScreen, page: () => const PaymentScreen()),
-    GetPage(
-        name: paymentDetailsScreen,
-        page: () => PaymentDetailsScreen(id: Get.arguments)),
+ 
     GetPage(name: itemScreen, page: () => const ItemScreen()),
     GetPage(
         name: itemDetailsScreen,

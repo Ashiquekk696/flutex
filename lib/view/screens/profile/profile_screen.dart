@@ -2,7 +2,6 @@ import 'package:flutex_admin/core/utils/images.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/home/home_controller.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
 import 'package:flutex_admin/view/components/circle_image_button.dart';
 import 'package:flutex_admin/view/components/column_widget/card_column.dart';
 import 'package:flutex_admin/view/components/divider/custom_divider.dart';
@@ -25,8 +24,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(HomeRepo(apiClient: Get.find()));
-    final controller = Get.put(HomeController(homeRepo: Get.find()));
+    final controller = Get.put(HomeController(homeRepo: Get.find(),authService: Get.find()));
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

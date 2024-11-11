@@ -1,20 +1,16 @@
-import 'dart:async';
-import 'dart:convert';
-import 'package:flutex_admin/core/utils/local_strings.dart';
-import 'package:flutex_admin/data/model/authorization/authorization_response_model.dart';
+import 'dart:async'; 
+import 'package:flutex_admin/core/utils/local_strings.dart'; 
 import 'package:flutex_admin/data/model/customer/customer_model.dart';
 import 'package:flutex_admin/data/model/estimate/estimate_model.dart';
 import 'package:flutex_admin/data/model/invoice/invoice_model.dart';
 import 'package:flutex_admin/data/model/project/project_details_model.dart';
 import 'package:flutex_admin/data/model/project/project_model.dart';
 import 'package:flutex_admin/data/model/project/project_post_model.dart';
-import 'package:flutex_admin/data/model/task/task_create_model.dart';
-import 'package:flutex_admin/data/repo/project/project_repo.dart';
+import 'package:flutex_admin/data/model/task/task_create_model.dart'; 
 import 'package:flutex_admin/domain/project_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:flutex_admin/data/model/global/response_model/response_model.dart';
+import 'package:get/get.dart'; 
 import 'package:flutex_admin/view/components/snack_bar/show_custom_snackbar.dart';
 
 import '../../../domain/customer_repository.dart';
@@ -40,8 +36,7 @@ class ProjectController extends GetxController {
   EstimatesModel estimatesModel = EstimatesModel();
   TaskCreateModel taskCreateModel = TaskCreateModel();
   CustomersModel customersModel = CustomersModel();
-
-  //List<String> relTypes = ["lead", "customer", "internal"];
+ 
 
   final Map<String, String> billingType = {
     '1': LocalStrings.fixedRate.tr,
@@ -174,7 +169,7 @@ class ProjectController extends GetxController {
 void projectAddedSuccesfully(){
     submitLoading =false;
     update();
-    CustomSnackBar.success(successList: ["Project Added successfully"]);
+    CustomSnackBar.success(successList: [LocalStrings.submitSuccessMsg]);
 
 }
   void clearData() {

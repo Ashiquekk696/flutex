@@ -1,18 +1,15 @@
 import 'dart:async';
-import 'dart:convert';
+
 import 'package:flutex_admin/core/utils/local_strings.dart';
-import 'package:flutex_admin/data/model/authorization/authorization_response_model.dart';
 import 'package:flutex_admin/data/model/lead/lead_create_model.dart';
 import 'package:flutex_admin/data/model/lead/lead_details_model.dart';
 import 'package:flutex_admin/data/model/lead/lead_model.dart';
 import 'package:flutex_admin/data/model/lead/sources_model.dart';
 import 'package:flutex_admin/data/model/lead/statuses_model.dart';
-import 'package:flutex_admin/data/repo/lead/lead_repo.dart';
 import 'package:flutex_admin/domain/leads_repository.dart';
 import 'package:flutex_admin/domain/statuses_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutex_admin/data/model/global/response_model/response_model.dart';
 import 'package:flutex_admin/view/components/snack_bar/show_custom_snackbar.dart';
 
 class LeadController extends GetxController {
@@ -37,9 +34,7 @@ class LeadController extends GetxController {
     update();
   }
 
-  Future<void> loadLeads() async {
-    // ResponseModel responseModel = await leadRepo.getAllLeads();
-    // leadsModel = LeadsModel.fromJson(jsonDecode(responseModel.responseJson));
+  Future<void> loadLeads() async { 
     leadRepo.getLeadsData().listen((data) {
       leadsModel = data;
       isLoading = false;
@@ -50,18 +45,6 @@ class LeadController extends GetxController {
     update();
   }
 
-  Future<void> loadLeadDetails(leadId) async {
-    // ResponseModel responseModel = await leadRepo.getLeadDetails(leadId);
-    // if (responseModel.statusCode == 200) {
-    //   leadDetailsModel =
-    //       LeadDetailsModel.fromJson(jsonDecode(responseModel.responseJson));
-    // } else {
-    //   CustomSnackBar.error(errorList: [responseModel.message]);
-    // }
-
-    // isLoading = false;
-    update();
-  }
 
   Future<void> loadLeadCreateData() async {
     leadRepo.getLeadsSources().listen((data) {
@@ -194,7 +177,7 @@ class LeadController extends GetxController {
   void leadAddeddSuccesfully() {
     isSubmitLoading = false;
     update();
-    CustomSnackBar.success(successList: ["Lead added successfully"]);
+    CustomSnackBar.success(successList: [LocalStrings.submitSuccessMsg]);
   }
 
   void clearData() {

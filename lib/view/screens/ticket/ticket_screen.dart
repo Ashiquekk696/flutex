@@ -5,8 +5,7 @@ import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/home/home_controller.dart';
 import 'package:flutex_admin/data/controller/ticket/ticket_controller.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
-import 'package:flutex_admin/data/repo/ticket/ticket_repo.dart';
+ 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_fab.dart';
@@ -29,10 +28,9 @@ class _TicketsScreenState extends State<TicketsScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(TicketRepo(apiClient: Get.find()));
-    final controller = Get.put(TicketController(ticketRepo: Get.find(),customerRepo: Get.find()));
-    Get.put(HomeRepo(apiClient: Get.find()));
-    final homeController = Get.put(HomeController(homeRepo: Get.find()));
+    final controller = Get.put(TicketController(ticketRepo: Get.find(),customerRepo: Get.find(),));
+   
+    final homeController = Get.put(HomeController(homeRepo: Get.find(),authService: Get.find()));
     controller.isLoading = true;
     super.initState();
     handleScroll();

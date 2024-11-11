@@ -2,7 +2,7 @@ import 'package:flutex_admin/core/helper/shared_preference_helper.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/data/controller/common/theme_controller.dart';
 import 'package:flutex_admin/data/controller/home/home_controller.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
+
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:flutex_admin/view/components/dialog/warning_dialog.dart';
@@ -33,8 +33,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(HomeRepo(apiClient: Get.find()));
-    final controller = Get.put(HomeController(homeRepo: Get.find()));
+    final controller = Get.put(HomeController(homeRepo: Get.find(),authService: Get.find()));
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

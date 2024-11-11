@@ -18,7 +18,6 @@ import 'package:flutex_admin/view/screens/home/widget/home_proposals_card.dart';
 import 'package:flutter/material.dart' hide CarouselController;
 import 'package:get/get.dart';
 import 'package:flutex_admin/data/controller/home/home_controller.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -32,8 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(HomeRepo(apiClient: Get.find()));
-    final controller = Get.put(HomeController(homeRepo: Get.find()));
+    final controller = Get.put(HomeController(homeRepo: Get.find(),authService: Get.find()));
 
     controller.isLoading = true;
 
@@ -50,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return WillPopWidget(
       nextRoute: '',
-      child: GetBuilder<HomeController>(builder: (controller) { 
+      child: GetBuilder<HomeController>(builder: (controller) {
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: AppBar(

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/data/model/contact/contact_model.dart';
 import 'package:flutex_admin/data/model/customer/customer_details.dart';
 import 'package:flutex_admin/data/model/customer/customer_model.dart';
@@ -147,7 +148,7 @@ class CustomerController extends GetxController {
       shippingCountry: shippingCountry,
     );
     await customerRepo.addCustomerDataToFirestore(customerModel);
-    CustomSnackBar.success(successList: ["Customer Added successfully"]);
+    CustomSnackBar.success(successList: [LocalStrings.submitSuccessMsg]);
   
   }
 

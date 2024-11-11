@@ -464,7 +464,8 @@ class LocalStrings {
   static const String qualified = 'Qualified';
   static const String reOpened = 'Reopened';
   static const String attachments = 'Attachments';
-
+ 
+  static const String submitSuccessMsg = 'Submitted Successfully';
   // KNOWLEDGE_BASE
   static const String knowledgeBase = 'Knowledge Base';
   static const String knowledgeBaseDetails = 'Knowledge Base Details';

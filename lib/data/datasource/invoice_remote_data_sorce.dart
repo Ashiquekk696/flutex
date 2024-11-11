@@ -21,26 +21,11 @@ class InvoiceRemoteDataSourceImpl implements InvoiceRemoteDataSource {
       if (snapshot.exists) {
         final data = snapshot.data() as Map<String, dynamic>;
         return data;
-      } else {
-        print('Document does not exist!');
+      } else { 
         return {};
       }
     });
   }
 
-  // @override
-  // Stream<Map<String, dynamic>> getInvoiceCurrencyDataStream() {
-  //   return firestore
-  //       .collection('homeResponses')
-  //       .doc('currencies')
-  //       .snapshots()
-  //       .map((snapshot) {
-  //     if (snapshot.exists) {
-  //       final data = snapshot.data() as Map<String, dynamic>;
-  //       return data;
-  //     } else {
-  //       return {};
-  //     }
-  //   });
-  // }
+ 
 }

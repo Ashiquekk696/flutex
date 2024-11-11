@@ -4,9 +4,7 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/customer/customer_controller.dart';
-import 'package:flutex_admin/data/controller/home/home_controller.dart';
-import 'package:flutex_admin/data/repo/customer/customer_repo.dart';
-import 'package:flutex_admin/data/repo/home/home_repo.dart';
+import 'package:flutex_admin/data/controller/home/home_controller.dart'; 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_fab.dart';
@@ -29,12 +27,10 @@ class _CustomersScreenState extends State<CustomersScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(CustomerRepo(apiClient: Get.find()));
-
-    final homeController = Get.put(HomeController(homeRepo: Get.find()));
+  final homeController = Get.put(HomeController(homeRepo: Get.find(),authService: Get.find()));
     final controller =
         Get.put(CustomerController(customerRepo: Get.find()), permanent: true);
-    Get.put(HomeRepo(apiClient: Get.find()));
+ 
 
     controller.isLoading = true;
     super.initState();

@@ -6,7 +6,6 @@ import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/project/project_controller.dart';
 import 'package:flutex_admin/data/model/customer/customer_model.dart';
-import 'package:flutex_admin/data/repo/project/project_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_button.dart';
@@ -28,7 +27,6 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ProjectRepo(apiClient: Get.find()));
     final controller = Get.put(
         ProjectController(projectRepo: Get.find(), customerRepo: Get.find()));
     controller.isLoading = true;
@@ -98,7 +96,7 @@ class _AddProjectScreenState extends State<AddProjectScreen> {
                             items: (controller.customersModel.data ?? [])
                                 .map((Customer value) {
                               return DropdownMenuItem(
-                                value: value.userId,
+                                value: value.company,
                                 child: Text(
                                   value.company ?? '',
                                   style: regularDefault.copyWith(

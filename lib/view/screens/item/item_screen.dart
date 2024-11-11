@@ -2,7 +2,6 @@ import 'package:flutex_admin/core/utils/color_resources.dart';
 import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/data/controller/item/item_controller.dart';
-import 'package:flutex_admin/data/repo/item/item_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
@@ -22,14 +21,11 @@ class _ItemScreenState extends State<ItemScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ItemRepo(apiClient: Get.find()));
-    final controller = Get.put(ItemController(itemRepo: Get.find()));
+    final controller = Get.put(ItemController( ));
     controller.isLoading = true;
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.initialData();
-    });
+    
   }
 
   @override
@@ -44,7 +40,7 @@ class _ItemScreenState extends State<ItemScreen> {
               ? const CustomLoader()
               : RefreshIndicator(
                   onRefresh: () async {
-                    await controller.initialData(shouldLoad: false);
+                   
                   },
                   child: Column(
                     children: [

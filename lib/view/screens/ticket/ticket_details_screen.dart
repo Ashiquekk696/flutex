@@ -4,7 +4,7 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/ticket/ticket_controller.dart';
-import 'package:flutex_admin/data/repo/ticket/ticket_repo.dart';
+ 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
@@ -24,13 +24,13 @@ class _TicketDetailsScreenState extends State<TicketDetailsScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(TicketRepo(apiClient: Get.find()));
+      
     final controller = Get.put(TicketController(ticketRepo: Get.find(),customerRepo: Get.find()));
     controller.isLoading = true;
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.loadTicketDetails(widget.id);
+
     });
   }
 
@@ -47,7 +47,6 @@ class _TicketDetailsScreenState extends State<TicketDetailsScreen> {
               : RefreshIndicator(
                   color: ColorResources.primaryColor,
                   onRefresh: () async {
-                    await controller.loadTicketDetails(widget.id);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(Dimensions.space12),

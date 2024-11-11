@@ -6,8 +6,7 @@ import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/proposal/proposal_controller.dart';
 import 'package:flutex_admin/data/model/customer/customer_model.dart';
-import 'package:flutex_admin/data/model/global/currencies_model.dart';
-import 'package:flutex_admin/data/repo/proposal/proposal_repo.dart';
+import 'package:flutex_admin/data/model/global/currencies_model.dart'; 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_button.dart';
@@ -29,7 +28,7 @@ class _AddProposalScreenState extends State<AddProposalScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ProposalRepo(apiClient: Get.find()));
+ 
     final controller = Get.put(ProposalController(proposalRepo: Get.find(),customerRepo: Get.find(),currencyRepo: Get.find()));
     controller.isLoading = true;
     super.initState();

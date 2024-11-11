@@ -6,7 +6,6 @@ import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/lead/lead_controller.dart';
 import 'package:flutex_admin/data/model/lead/sources_model.dart';
 import 'package:flutex_admin/data/model/lead/statuses_model.dart';
-import 'package:flutex_admin/data/repo/lead/lead_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_button.dart';
@@ -28,7 +27,6 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(LeadRepo(apiClient: Get.find()));
     final controller = Get.put(LeadController(leadRepo: Get.find(),statusRepository: Get.find()));
     controller.isLoading = true;
     super.initState();

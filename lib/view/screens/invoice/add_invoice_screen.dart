@@ -10,8 +10,7 @@ import 'package:flutex_admin/data/controller/invoice/invoice_controller.dart';
 import 'package:flutex_admin/data/model/customer/customer_model.dart';
 import 'package:flutex_admin/data/model/global/currencies_model.dart';
 import 'package:flutex_admin/data/model/global/payment_modes_model.dart';
-//import 'package:flutex_admin/data/model/global/taxes_model.dart';
-import 'package:flutex_admin/data/repo/invoice/invoice_repo.dart';
+ 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_button.dart';
@@ -33,8 +32,7 @@ class AddInvoiceScreen extends StatefulWidget {
 class _AddInvoiceScreenState extends State<AddInvoiceScreen> {
   @override
   void initState() {
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(InvoiceRepo(apiClient: Get.find()));
+    Get.put(ApiClient(sharedPreferences: Get.find())); 
     final controller = Get.put(InvoiceController(
         invoiceRepo: Get.find(),
         customerRepo: Get.find(),

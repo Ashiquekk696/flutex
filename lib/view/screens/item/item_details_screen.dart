@@ -3,7 +3,6 @@ import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/core/utils/local_strings.dart';
 import 'package:flutex_admin/core/utils/style.dart';
 import 'package:flutex_admin/data/controller/item/item_controller.dart';
-import 'package:flutex_admin/data/repo/item/item_repo.dart';
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
@@ -23,15 +22,12 @@ class ItemDetailsScreen extends StatefulWidget {
 class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
   @override
   void initState() {
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(ItemRepo(apiClient: Get.find()));
-    final controller = Get.put(ItemController(itemRepo: Get.find()));
+    Get.put(ApiClient(sharedPreferences: Get.find())); 
+    final controller = Get.put(ItemController( ));
     controller.isLoading = true;
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.loadItemDetails(widget.id);
-    });
+    
   }
 
   @override
@@ -45,8 +41,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
           return controller.isLoading
               ? const CustomLoader()
               : RefreshIndicator(
-                  onRefresh: () async {
-                    await controller.loadItemDetails(widget.id);
+                  onRefresh: () async { 
                   },
                   child: SingleChildScrollView(
                     physics: const AlwaysScrollableScrollPhysics(),

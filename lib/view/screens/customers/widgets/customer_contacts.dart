@@ -2,8 +2,7 @@ import 'package:flutex_admin/core/route/route.dart';
 import 'package:flutex_admin/core/utils/color_resources.dart';
 import 'package:flutex_admin/core/utils/dimensions.dart';
 import 'package:flutex_admin/data/controller/customer/customer_controller.dart';
-import 'package:flutex_admin/data/model/contact/contact_model.dart';
-import 'package:flutex_admin/data/repo/customer/customer_repo.dart';
+import 'package:flutex_admin/data/model/contact/contact_model.dart'; 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/custom_fab.dart';
 import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
@@ -24,8 +23,7 @@ class CustomerContacts extends StatefulWidget {
 class _CustomerContactsState extends State<CustomerContacts> {
   @override
   void initState() {
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(CustomerRepo(apiClient: Get.find()));
+    Get.put(ApiClient(sharedPreferences: Get.find())); 
     final controller = Get.put(CustomerController(customerRepo: Get.find()));
     controller.isLoading = true;
     super.initState();

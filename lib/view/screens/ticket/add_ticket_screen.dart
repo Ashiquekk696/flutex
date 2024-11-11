@@ -7,12 +7,12 @@ import 'package:flutex_admin/data/model/customer/customer_model.dart';
 import 'package:flutex_admin/data/model/ticket/departments_model.dart';
 import 'package:flutex_admin/data/model/ticket/priorities_model.dart';
 import 'package:flutex_admin/data/model/ticket/services_model.dart';
-import 'package:flutex_admin/data/repo/ticket/ticket_repo.dart';
+ 
 import 'package:flutex_admin/data/services/api_service.dart';
 import 'package:flutex_admin/view/components/app-bar/custom_appbar.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_button.dart';
 import 'package:flutex_admin/view/components/buttons/rounded_loading_button.dart';
-import 'package:flutex_admin/view/components/custom_loader/custom_loader.dart';
+ 
 import 'package:flutex_admin/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:flutex_admin/view/components/text-form-field/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class _AddTicketScreenState extends State<AddTicketScreen> {
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
-    Get.put(TicketRepo(apiClient: Get.find()));
+ 
     final controller = Get.put(
         TicketController(ticketRepo: Get.find(), customerRepo: Get.find()));
     controller.initialData();

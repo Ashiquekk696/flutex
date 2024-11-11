@@ -9,11 +9,11 @@ import '../../services/auth_service.dart';
 
 class HomeController extends GetxController {
   HomeRepository homeRepo;
-  HomeController({required this.homeRepo});
-  late AuthService authService;
+  AuthService authService;
+  HomeController({required this.homeRepo, required this.authService});
   bool isLoading = true;
   bool logoutLoading = false;
- HomeResponseModel homeModel =HomeResponseModel();
+  HomeResponseModel homeModel = HomeResponseModel();
 
   Future<void> initialData({bool shouldLoad = true}) async {
     isLoading = shouldLoad ? true : false;

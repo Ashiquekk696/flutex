@@ -1,20 +1,16 @@
-import 'dart:async';
-import 'dart:convert';
-import 'package:flutex_admin/core/utils/local_strings.dart';
-import 'package:flutex_admin/data/model/authorization/authorization_response_model.dart';
+import 'dart:async'; 
+import 'package:flutex_admin/core/utils/local_strings.dart'; 
 import 'package:flutex_admin/data/model/customer/customer_model.dart';
 import 'package:flutex_admin/data/model/global/currencies_model.dart';
 import 'package:flutex_admin/data/model/proposal/proposal_details_model.dart';
 import 'package:flutex_admin/data/model/proposal/proposal_item_model.dart';
 import 'package:flutex_admin/data/model/proposal/proposal_model.dart';
-import 'package:flutex_admin/data/model/proposal/proposal_post_model.dart';
-import 'package:flutex_admin/data/repo/proposal/proposal_repo.dart';
+import 'package:flutex_admin/data/model/proposal/proposal_post_model.dart'; 
 import 'package:flutex_admin/domain/currency_repository.dart';
 import 'package:flutex_admin/domain/customer_repository.dart';
 import 'package:flutex_admin/domain/proposals_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:flutex_admin/data/model/global/response_model/response_model.dart';
+import 'package:get/get.dart'; 
 import 'package:flutex_admin/view/components/snack_bar/show_custom_snackbar.dart';
 
 class ProposalController extends GetxController {
@@ -57,26 +53,10 @@ class ProposalController extends GetxController {
       proposalsModel = data;
       update();
     });
-    // ResponseModel responseModel = await proposalRepo.getAllProposals();
-    // proposalsModel =
-    //     ProposalsModel.fromJson(jsonDecode(responseModel.responseJson));
-    // isLoading = false;
-    // update();
+    
   }
 
-  Future<void> loadProposalDetails(proposalId) async {
-    // ResponseModel responseModel =
-    //     await proposalRepo.getProposalDetails(proposalId);
-    // if (responseModel.statusCode == 200) {
-    //   proposalDetailsModel =
-    //       ProposalDetailsModel.fromJson(jsonDecode(responseModel.responseJson));
-    // } else {
-    //   CustomSnackBar.error(errorList: [responseModel.message]);
-    // }
-
-    // isLoading = false;
-    // update();
-  }
+ 
 
   Future<void> loadProposalCreateData() async {
     currencyRepo.getCurrencyData().listen((currenciesResponseModel) {
@@ -88,14 +68,7 @@ class ProposalController extends GetxController {
       isLoading = false;
       update();
     });
-    // ResponseModel customersResponseModel = await proposalRepo.getAllCustomers();
-    // customersModel = CustomersModel.fromJson(
-    //     jsonDecode(customersResponseModel.responseJson));
-    // ResponseModel currenciesResponseModel = await proposalRepo.getCurrencies();
-    // currenciesModel = CurrenciesModel.fromJson(
-    //     jsonDecode(currenciesResponseModel.responseJson));
-    // isLoading = false;
-    // update();
+    
   }
 
   TextEditingController subjectController = TextEditingController();
@@ -260,7 +233,7 @@ class ProposalController extends GetxController {
   }
 
   void submittedSuccessful() {
-    CustomSnackBar.success(successList: ["Customer Added successfully"]);
+    CustomSnackBar.success(successList: [LocalStrings.submitSuccessMsg]);
     isSubmitLoading = false;
     update();
   }

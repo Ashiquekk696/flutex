@@ -260,34 +260,16 @@ class InvoiceController extends GetxController {
         FirebaseFirestore.instance.collection('homeResponses').doc('invoices');
     Map<String, dynamic> invoiceData = {
       'data': FieldValue.arrayUnion(
-          [invoiceModel.toJson()]), // Save invoice data inside the 'data' field
+          [invoiceModel.toJson()]),
     };
-    // Save the invoice data
     await invoiceRef.set(invoiceData, SetOptions(merge: true));
     submitedInvoiceSuccessfully();
-    // ResponseModel responseModel = await invoiceRepo.createInvoice(invoiceModel);
-    // if (responseModel.statusCode == 200) {
-    //   AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(
-    //       jsonDecode(responseModel.responseJson));
-    //   if (model.status!) {
-    //     if (context.mounted) Navigator.pop(context);
-    //     await initialData();
-    //     CustomSnackBar.success(successList: [model.message!]);
-    //   } else {
-    //     CustomSnackBar.error(errorList: [model.message!]);
-    //   }
-    // } else {
-    //   CustomSnackBar.error(errorList: [responseModel.message]);
-    //   return;
-    // }
-
-    // isSubmitLoading = false;
-    // update();
+   
   }
 
   void submitedInvoiceSuccessfully() {
     isSubmitLoading = false;
-    CustomSnackBar.success(successList: ["submited Invoice Successfully"]);
+    CustomSnackBar.success(successList: [LocalStrings.submitSuccessMsg]);
     clearData();
     update();
   }

@@ -1,7 +1,6 @@
-import 'dart:async';
-import 'dart:convert';
+import 'dart:async'; 
 import 'package:flutex_admin/core/utils/local_strings.dart';
-import 'package:flutex_admin/data/model/authorization/authorization_response_model.dart';
+ 
 import 'package:flutex_admin/data/model/contact/contact_model.dart';
 import 'package:flutex_admin/data/model/customer/customer_model.dart';
 import 'package:flutex_admin/data/model/ticket/departments_model.dart';
@@ -10,11 +9,10 @@ import 'package:flutex_admin/data/model/ticket/services_model.dart';
 import 'package:flutex_admin/data/model/ticket/ticket_create_model.dart';
 import 'package:flutex_admin/data/model/ticket/ticket_details_model.dart';
 import 'package:flutex_admin/data/model/ticket/ticket_model.dart';
-import 'package:flutex_admin/data/repo/ticket/ticket_repo.dart';
 import 'package:flutex_admin/domain/ticket_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutex_admin/data/model/global/response_model/response_model.dart';
+ 
 import 'package:flutex_admin/view/components/snack_bar/show_custom_snackbar.dart';
 
 import '../../../domain/customer_repository.dart';
@@ -131,28 +129,11 @@ class TicketController extends GetxController {
     await ticketRepo.addTicket(ticketModel);
     await ticketAddedSuccesfull();
 
-    // ResponseModel responseModel = await ticketRepo.createTicket(ticketModel);
-    // if (responseModel.statusCode == 200) {
-    //   AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(
-    //       jsonDecode(responseModel.responseJson));
-    //   if (model.status!) {
-    //     if (context.mounted) Navigator.pop(context);
-    //     await initialData();
-    //     CustomSnackBar.success(successList: [model.message!]);
-    //   } else {
-    //     CustomSnackBar.error(errorList: [model.message!]);
-    //   }
-    // } else {
-    //   CustomSnackBar.error(errorList: [responseModel.message]);
-    //   return;
-    // }
-
-    // isSubmitLoading = false;
-    // update();
+ 
   }
 
   ticketAddedSuccesfull() {
-    CustomSnackBar.success(successList: ["Ticket added successfully"]);
+    CustomSnackBar.success(successList: [LocalStrings.submitSuccessMsg]);
     isSubmitLoading = false;
     clearData();
     update();
@@ -164,48 +145,10 @@ class TicketController extends GetxController {
       isLoading = false;
       update();
     });
-    // ResponseModel customersResponseModel = await ticketRepo.getAllCustomers();
-    // customersModel = CustomersModel.fromJson(
-    //     jsonDecode(customersResponseModel.responseJson));
-
-    // ResponseModel departmentsResponseModel =
-    //     await ticketRepo.getTicketDepartments();
-    // departmentModel = DepartmentModel.fromJson(
-    //     jsonDecode(departmentsResponseModel.responseJson));
-
-    // ResponseModel prioritiesResponseModel =
-    //     await ticketRepo.getTicketPriorities();
-    // priorityModel = PriorityModel.fromJson(
-    //     jsonDecode(prioritiesResponseModel.responseJson));
-
-    // ResponseModel servicesResponseModel = await ticketRepo.getTicketServices();
-    // serviceModel =
-    //     ServiceModel.fromJson(jsonDecode(servicesResponseModel.responseJson));
-    // isLoading = false;
-    // update();
+  
   }
-
-  Future<void> loadTicketCustomerContacts(userId) async {
-    // ResponseModel contactsResponseModel =
-    //     await ticketRepo.getCustomerContacts(userId);
-    // contactsModel =
-    //     ContactsModel.fromJson(jsonDecode(contactsResponseModel.responseJson));
-    // isLoading = false;
-    // update();
-  }
-
-  Future<void> loadTicketDetails(ticketId) async {
-    // ResponseModel responseModel = await ticketRepo.getTicketDetails(ticketId);
-    // if (responseModel.statusCode == 200) {
-    //   ticketDetailsModel =
-    //       TicketDetailsModel.fromJson(jsonDecode(responseModel.responseJson));
-    // } else {
-    //   CustomSnackBar.error(errorList: [responseModel.message]);
-    // }
-
-    // isLoading = false;
-    // update();
-  }
+ 
+ 
 
   void clearData() {
     isLoading = false;
